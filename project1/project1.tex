@@ -1,0 +1,253 @@
+% Created 2024-02-21 Wed 20:42
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\author{Malcolm Kahora}
+\date{\today}
+\title{Homework 2\\\medskip
+\large STA 307}
+\hypersetup{
+ pdfauthor={Malcolm Kahora},
+ pdftitle={Homework 2},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.0.50 (Org mode 9.6.11)}, 
+ pdflang={English}}
+
+% Setup for code blocks [1/2]
+
+\usepackage{fvextra}
+
+\fvset{%
+  commandchars=\\\{\},
+  highlightcolor=white!95!black!80!blue,
+  breaklines=true,
+  breaksymbol=\color{white!60!black}\tiny\ensuremath{\hookrightarrow}}
+
+% Make line numbers smaller and grey.
+\renewcommand\theFancyVerbLine{\footnotesize\color{black!40!white}\arabic{FancyVerbLine}}
+
+\usepackage{xcolor}
+
+% In case engrave-faces-latex-gen-preamble has not been run.
+\providecolor{EfD}{HTML}{f7f7f7}
+\providecolor{EFD}{HTML}{28292e}
+
+% Define a Code environment to prettily wrap the fontified code.
+\usepackage[breakable,xparse]{tcolorbox}
+\DeclareTColorBox[]{Code}{o}%
+{colback=EfD!98!EFD, colframe=EfD!95!EFD,
+  fontupper=\footnotesize\setlength{\fboxsep}{0pt},
+  colupper=EFD,
+  IfNoValueTF={#1}%
+  {boxsep=2pt, arc=2.5pt, outer arc=2.5pt,
+    boxrule=0.5pt, left=2pt}%
+  {boxsep=2.5pt, arc=0pt, outer arc=0pt,
+    boxrule=0pt, leftrule=1.5pt, left=0.5pt},
+  right=2pt, top=1pt, bottom=0.5pt,
+  breakable}
+
+% Support listings with captions
+\usepackage{float}
+\floatstyle{plain}
+\newfloat{listing}{htbp}{lst}
+\newcommand{\listingsname}{Listing}
+\floatname{listing}{\listingsname}
+\newcommand{\listoflistingsname}{List of Listings}
+\providecommand{\listoflistings}{\listof{listing}{\listoflistingsname}}
+
+
+% Setup for code blocks [2/2]: syntax highlighting colors
+
+
+\newcommand{\engravedthemedoomone}{%
+\renewcommand\efstrut{\vrule height 2.1ex depth 0.8ex width 0pt}
+\definecolor{EFD}{HTML}{bbc2cf}
+\definecolor{EfD}{HTML}{282c34}
+\renewcommand{\EFD}[1]{\textcolor{EFD}{##1}} % default
+\definecolor{EFh}{HTML}{5B6268}
+\renewcommand{\EFh}[1]{\textcolor{EFh}{##1}} % shadow
+\definecolor{EFsc}{HTML}{98be65}
+\renewcommand{\EFsc}[1]{\textcolor{EFsc}{##1}} % success
+\definecolor{EFw}{HTML}{ECBE7B}
+\renewcommand{\EFw}[1]{\textcolor{EFw}{##1}} % warning
+\definecolor{EFe}{HTML}{ff6c6b}
+\renewcommand{\EFe}[1]{\textcolor{EFe}{##1}} % error
+\definecolor{EFc}{HTML}{5B6268}
+\renewcommand{\EFc}[1]{\textcolor{EFc}{##1}} % font-lock-comment-face
+\definecolor{EFcd}{HTML}{5B6268}
+\renewcommand{\EFcd}[1]{\textcolor{EFcd}{##1}} % font-lock-comment-delimiter-face
+\definecolor{EFs}{HTML}{98be65}
+\renewcommand{\EFs}[1]{\textcolor{EFs}{##1}} % font-lock-string-face
+\definecolor{EFd}{HTML}{83898d}
+\renewcommand{\EFd}[1]{\textcolor{EFd}{##1}} % font-lock-doc-face
+\definecolor{EFm}{HTML}{a9a1e1}
+\renewcommand{\EFm}[1]{\textcolor{EFm}{##1}} % font-lock-doc-markup-face
+\definecolor{EFk}{HTML}{51afef}
+\renewcommand{\EFk}[1]{\textcolor{EFk}{##1}} % font-lock-keyword-face
+\definecolor{EFb}{HTML}{c678dd}
+\renewcommand{\EFb}[1]{\textcolor{EFb}{##1}} % font-lock-builtin-face
+\definecolor{EFf}{HTML}{c678dd}
+\renewcommand{\EFf}[1]{\textcolor{EFf}{##1}} % font-lock-function-name-face
+\definecolor{EFv}{HTML}{dcaeea}
+\renewcommand{\EFv}[1]{\textcolor{EFv}{##1}} % font-lock-variable-name-face
+\definecolor{EFt}{HTML}{ECBE7B}
+\renewcommand{\EFt}[1]{\textcolor{EFt}{##1}} % font-lock-type-face
+\definecolor{EFo}{HTML}{a9a1e1}
+\renewcommand{\EFo}[1]{\textcolor{EFo}{##1}} % font-lock-constant-face
+\definecolor{EFwr}{HTML}{ECBE7B}
+\renewcommand{\EFwr}[1]{\textcolor{EFwr}{##1}} % font-lock-warning-face
+\definecolor{EFnc}{HTML}{51afef}
+\renewcommand{\EFnc}[1]{\textcolor{EFnc}{\textbf{##1}}} % font-lock-negation-char-face
+\definecolor{EFpp}{HTML}{51afef}
+\renewcommand{\EFpp}[1]{\textcolor{EFpp}{\textbf{##1}}} % font-lock-preprocessor-face
+\definecolor{EFrc}{HTML}{51afef}
+\renewcommand{\EFrc}[1]{\textcolor{EFrc}{\textbf{##1}}} % font-lock-regexp-grouping-construct
+\definecolor{EFrb}{HTML}{51afef}
+\renewcommand{\EFrb}[1]{\textcolor{EFrb}{\textbf{##1}}} % font-lock-regexp-grouping-backslash
+\definecolor{Efob}{HTML}{23272e}
+\renewcommand{\EFob}[1]{\colorbox{Efob}{\efstrut{}##1}} % org-block
+\renewcommand{\EFhn}[1]{##1} % highlight-numbers-number
+\renewcommand{\EFhq}[1]{##1} % highlight-quoted-quote
+\renewcommand{\EFhs}[1]{##1} % highlight-quoted-symbol
+\definecolor{EFrda}{HTML}{51afef}
+\renewcommand{\EFrda}[1]{\textcolor{EFrda}{##1}} % rainbow-delimiters-depth-1-face
+\definecolor{EFrdb}{HTML}{c678dd}
+\renewcommand{\EFrdb}[1]{\textcolor{EFrdb}{##1}} % rainbow-delimiters-depth-2-face
+\definecolor{EFrdc}{HTML}{98be65}
+\renewcommand{\EFrdc}[1]{\textcolor{EFrdc}{##1}} % rainbow-delimiters-depth-3-face
+\definecolor{EFrdd}{HTML}{a9a1e1}
+\renewcommand{\EFrdd}[1]{\textcolor{EFrdd}{##1}} % rainbow-delimiters-depth-4-face
+\definecolor{EFrde}{HTML}{4db5bd}
+\renewcommand{\EFrde}[1]{\textcolor{EFrde}{##1}} % rainbow-delimiters-depth-5-face
+\definecolor{EFrdf}{HTML}{51afef}
+\renewcommand{\EFrdf}[1]{\textcolor{EFrdf}{##1}} % rainbow-delimiters-depth-6-face
+\definecolor{EFrdg}{HTML}{c678dd}
+\renewcommand{\EFrdg}[1]{\textcolor{EFrdg}{##1}} % rainbow-delimiters-depth-7-face
+\definecolor{EFrdh}{HTML}{98be65}
+\renewcommand{\EFrdh}[1]{\textcolor{EFrdh}{##1}} % rainbow-delimiters-depth-8-face
+\definecolor{EFrdi}{HTML}{a9a1e1}
+\renewcommand{\EFrdi}[1]{\textcolor{EFrdi}{##1}} % rainbow-delimiters-depth-9-face
+}
+
+\newcommand\efstrut{\vrule height 2.1ex depth 0.8ex width 0pt}
+\definecolor{EFD}{HTML}{ebdbb2}
+\definecolor{EfD}{HTML}{282828}
+\newcommand{\EFD}[1]{\textcolor{EFD}{#1}} % default
+\definecolor{EFh}{HTML}{7c6f64}
+\newcommand{\EFh}[1]{\textcolor{EFh}{#1}} % shadow
+\definecolor{EFsc}{HTML}{b8bb26}
+\newcommand{\EFsc}[1]{\textcolor{EFsc}{#1}} % success
+\definecolor{EFw}{HTML}{fabd2f}
+\newcommand{\EFw}[1]{\textcolor{EFw}{#1}} % warning
+\definecolor{EFe}{HTML}{fb4934}
+\newcommand{\EFe}[1]{\textcolor{EFe}{#1}} % error
+\definecolor{EFc}{HTML}{928374}
+\newcommand{\EFc}[1]{\textcolor{EFc}{#1}} % font-lock-comment-face
+\definecolor{EFcd}{HTML}{928374}
+\newcommand{\EFcd}[1]{\textcolor{EFcd}{#1}} % font-lock-comment-delimiter-face
+\definecolor{EFs}{HTML}{b8bb26}
+\newcommand{\EFs}[1]{\textcolor{EFs}{#1}} % font-lock-string-face
+\definecolor{EFd}{HTML}{dfd2b8}
+\newcommand{\EFd}[1]{\textcolor{EFd}{#1}} % font-lock-doc-face
+\definecolor{EFm}{HTML}{d3869b}
+\newcommand{\EFm}[1]{\textcolor{EFm}{#1}} % font-lock-doc-markup-face
+\definecolor{EFk}{HTML}{fb4934}
+\newcommand{\EFk}[1]{\textcolor{EFk}{#1}} % font-lock-keyword-face
+\definecolor{EFb}{HTML}{fe8019}
+\newcommand{\EFb}[1]{\textcolor{EFb}{#1}} % font-lock-builtin-face
+\definecolor{EFf}{HTML}{b8bb26}
+\newcommand{\EFf}[1]{\textcolor{EFf}{#1}} % font-lock-function-name-face
+\definecolor{EFv}{HTML}{83a598}
+\newcommand{\EFv}[1]{\textcolor{EFv}{#1}} % font-lock-variable-name-face
+\definecolor{EFt}{HTML}{fabd2f}
+\newcommand{\EFt}[1]{\textcolor{EFt}{#1}} % font-lock-type-face
+\definecolor{EFo}{HTML}{d3869b}
+\newcommand{\EFo}[1]{\textcolor{EFo}{#1}} % font-lock-constant-face
+\definecolor{EFwr}{HTML}{fabd2f}
+\newcommand{\EFwr}[1]{\textcolor{EFwr}{#1}} % font-lock-warning-face
+\newcommand{\EFnc}[1]{\textbf{#1}} % font-lock-negation-char-face
+\newcommand{\EFpp}[1]{\textbf{#1}} % font-lock-preprocessor-face
+\newcommand{\EFrc}[1]{\textbf{#1}} % font-lock-regexp-grouping-construct
+\newcommand{\EFrb}[1]{\textbf{#1}} % font-lock-regexp-grouping-backslash
+\definecolor{Efob}{HTML}{3c3836}
+\newcommand{\EFob}[1]{\colorbox{Efob}{\efstrut{}#1}} % org-block
+\newcommand{\EFhn}[1]{#1} % highlight-numbers-number
+\newcommand{\EFhq}[1]{#1} % highlight-quoted-quote
+\newcommand{\EFhs}[1]{#1} % highlight-quoted-symbol
+\definecolor{EFrda}{HTML}{fe8019}
+\newcommand{\EFrda}[1]{\textcolor{EFrda}{#1}} % rainbow-delimiters-depth-1-face
+\definecolor{EFrdb}{HTML}{cc241d}
+\newcommand{\EFrdb}[1]{\textcolor{EFrdb}{#1}} % rainbow-delimiters-depth-2-face
+\definecolor{EFrdc}{HTML}{b8bb26}
+\newcommand{\EFrdc}[1]{\textcolor{EFrdc}{#1}} % rainbow-delimiters-depth-3-face
+\definecolor{EFrdd}{HTML}{83a598}
+\newcommand{\EFrdd}[1]{\textcolor{EFrdd}{#1}} % rainbow-delimiters-depth-4-face
+\definecolor{EFrde}{HTML}{8ec07c}
+\newcommand{\EFrde}[1]{\textcolor{EFrde}{#1}} % rainbow-delimiters-depth-5-face
+\definecolor{EFrdf}{HTML}{83a598}
+\newcommand{\EFrdf}[1]{\textcolor{EFrdf}{#1}} % rainbow-delimiters-depth-6-face
+\definecolor{EFrdg}{HTML}{cc241d}
+\newcommand{\EFrdg}[1]{\textcolor{EFrdg}{#1}} % rainbow-delimiters-depth-7-face
+\definecolor{EFrdh}{HTML}{b8bb26}
+\newcommand{\EFrdh}[1]{\textcolor{EFrdh}{#1}} % rainbow-delimiters-depth-8-face
+\definecolor{EFrdi}{HTML}{d3869b}
+\newcommand{\EFrdi}[1]{\textcolor{EFrdi}{#1}} % rainbow-delimiters-depth-9-face
+\begin{document}
+
+\maketitle
+{\engravedthemedoomone\begin{Code}
+\begin{Verbatim}
+\color{EFD}
+\EFk{import} numpy \EFk{as} np
+\EFk{import} pandas \EFk{as} pd
+\EFk{from} ISLP \EFk{import} load\_data
+\EFk{import} matplotlib.pyplot \EFk{as} plt
+\EFk{from} matplotlib.pyplot \EFk{import} subplots
+
+\EFv{AUTO} = load\_data\EFrda{(}\EFs{"Auto"}\EFrda{)}
+\end{Verbatim}
+\end{Code}}
+
+\section*{Question 1}
+\label{sec:org7def4b8}
+
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}
+\EFv{AUTO} = load\_data\EFrda{(}\EFs{"Auto"}\EFrda{)}
+\EFv{selected\_coloumns} = \EFrda{[}\EFs{'cylinders'}, \EFs{'displacement'},  \EFs{'weight'}, \EFs{'acceleration'}, \EFrda{]}
+
+\EFb{print}\EFrda{(}AUTO\EFrdb{[}selected\_coloumns\EFrdb{]}.head\EFrda{)}
+\end{Verbatim}
+\end{Code}
+
+\begin{verbatim}
+<bound method NDFrame.head of      cylinders  displacement  weight  acceleration
+0            8         307.0    3504          12.0
+1            8         350.0    3693          11.5
+2            8         318.0    3436          11.0
+3            8         304.0    3433          12.0
+4            8         302.0    3449          10.5
+..         ...           ...     ...           ...
+387          4         140.0    2790          15.6
+388          4          97.0    2130          24.6
+389          4         135.0    2295          11.6
+390          4         120.0    2625          18.6
+391          4         119.0    2720          19.4
+
+[392 rows x 4 columns]>
+\end{verbatim}
+\end{document}
