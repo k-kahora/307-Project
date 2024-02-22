@@ -100,13 +100,6 @@ dtype: float64
 ** a
 #+begin_src python :session graphics :results graphics file value :file plot.png :exports both :eval yes
 
-# scaler = StandardScaler()
-# scaler.fit(X)
-# X_standardized = scaler.transform(X)
-
-# print("Means: ",np.mean(X_standardized,axis=0))
-# print("Standard deviations: ",np.std(X_standardized,axis=0))
-
 print("Original data size:",X.shape)
 # Implement PCA with 2 principal components
 pca = PCA(n_components=2)
@@ -136,7 +129,7 @@ plt.legend()
 # Show plot
 plt.tight_layout()
 plt.savefig("plot.png", bbox_inches='tight')
-plt.show()
+plt.close()
 #+end_src
 
 #+RESULTS:
@@ -179,8 +172,8 @@ dtype: float64
 
 * Question 5
 
-##+begin_src python :session graphics :results output :exports both :eval yes
-#+begin_src python :session graphics :results graphics file value :file plot.png :exports both :eval yes
+** a
+#+begin_src python :session graphics :results graphics file value :file plot-standard.png :exports both :eval yes
 pca = PCA(n_components=2)
 Z_reduced = pca.fit_transform(Z)
 print("Reduced data size:", Z_reduced.shape)
@@ -197,9 +190,33 @@ plt.legend()
 
 # Show plot
 plt.tight_layout()
-plt.savefig("plot.png", bbox_inches='tight')
-plt.show()
+plt.savefig("plot-standard.png", bbox_inches='tight')
+plt.close()
+# plt.show()
 #+end_src
 
 #+RESULTS:
 [[file:plot.png]]
+
+** b
+It seems that the three most important features are 'cylinders', 'displacement', and 'weight', as the first principal component (\(\phi\)1) weighs these more heavily, with 'displacement' appearing to have the highest contribution to variance by a small margin.
+** c
+
+#+begin_src python :session graphics :results output :exports both :eval yes
+dot_product_mock = np.dot(components[0], components[1])
+
+# Calculate the magnitude (norm) of each principal component to check if it's equal to one
+magnitude_phi1_mock = np.linalg.norm(components[0])
+magnitude_phi2_mock = np.linalg.norm(components[1])
+print("Dot product", dot_product_mock)
+print("Magnitude phi 1",magnitude_phi1)
+print("Magnitude phi 2", magnitude_phi2)
+
+#+end_src
+
+#+RESULTS:
+: Dot product -1.1102230246251565e-16
+: Magnitude phi 1 1.0000000000000002
+: Magnitude phi 2 1.0000000000000002
+
+* Question 6
