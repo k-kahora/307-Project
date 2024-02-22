@@ -1,4 +1,4 @@
-% Created 2024-02-22 Thu 19:10
+% Created 2024-02-22 Thu 19:26
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -227,7 +227,7 @@
 \end{Code}}
 
 \section*{Question 1}
-\label{sec:orge6ad14b}
+\label{sec:orgd0c1271}
 
 
 \begin{Code}
@@ -265,7 +265,7 @@ Japanese cars: 79
 \end{verbatim}
 
 \section*{Question 2}
-\label{sec:orgf54ac04}
+\label{sec:org55b33e6}
 
 
 
@@ -299,24 +299,26 @@ dtype: float64
 \end{verbatim}
 
 \section*{Qustion 3}
-\label{sec:org5f38fec}
+\label{sec:orgc5c61c2}
 
+\subsection*{a}
+\label{sec:orgbe84ed0}
 \begin{Code}
 \begin{Verbatim}
 \color{EFD}
-\EFv{scaler} = StandardScaler\EFrda{(}\EFrda{)}
-scaler.fit\EFrda{(}X\EFrda{)}
-\EFv{X\_standardized} = scaler.transform\EFrda{(}X\EFrda{)}
+\EFcd{\# }\EFc{scaler = StandardScaler()}
+\EFcd{\# }\EFc{scaler.fit(X)}
+\EFcd{\# }\EFc{X\_standardized = scaler.transform(X)}
 
-\EFb{print}\EFrda{(}\EFs{"Means: "},np.mean\EFrdb{(}X\_standardized,axis=0\EFrdb{)}\EFrda{)}
-\EFb{print}\EFrda{(}\EFs{"Standard deviations: "},np.std\EFrdb{(}X\_standardized,axis=0\EFrdb{)}\EFrda{)}
+\EFcd{\# }\EFc{print("Means: ",np.mean(X\_standardized,axis=0))}
+\EFcd{\# }\EFc{print("Standard deviations: ",np.std(X\_standardized,axis=0))}
 
 \EFb{print}\EFrda{(}\EFs{"Original data size:"},X.shape\EFrda{)}
 \EFcd{\# }\EFc{Implement PCA with 2 principal components}
 \EFv{pca} = PCA\EFrda{(}n\_components=2\EFrda{)}
 
 \EFcd{\# }\EFc{Fit the PCA model to the data and transform the data}
-\EFv{X\_reduced} = pca.fit\_transform\EFrda{(}X\_standardized\EFrda{)}
+\EFv{X\_reduced} = pca.fit\_transform\EFrda{(}X\EFrda{)}
 \EFb{print}\EFrda{(}\EFs{"Reduced data size:"}, X\_reduced.shape\EFrda{)}
 
 \EFcd{\#}\EFc{principal components}
@@ -340,7 +342,76 @@ plt.legend\EFrda{(}\EFrda{)}
 \EFcd{\# }\EFc{Show plot}
 plt.tight\_layout\EFrda{(}\EFrda{)}
 plt.savefig\EFrda{(}\EFs{"plot.png"}, bbox\_inches=\EFs{'tight'}\EFrda{)}
-\EFcd{\# }\EFc{plt.show()}
+plt.show\EFrda{(}\EFrda{)}
+\end{Verbatim}
+\end{Code}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{plot.png}
+\end{center}
+
+\subsection*{b}
+\label{sec:org964fb6e}
+It seems pca is caputring the data with larger scales this can lead to misleading conclusions and the importance of features
+
+\section*{Question 4}
+\label{sec:org931dfad}
+
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}
+\EFcd{\# }\EFc{Manually standardize the data to have mean 0 and standard deviation 1}
+\EFv{means} = np.mean\EFrda{(}X, axis=0\EFrda{)}
+\EFv{stds} = np.std\EFrda{(}X, axis=0\EFrda{)}
+\EFv{Z} = \EFrda{(}X - means\EFrda{)} / stds
+
+\EFcd{\# }\EFc{Verify that all features in Z have a mean of approximately zero and a standard deviation of one}
+\EFv{means\_Z} = np.mean\EFrda{(}Z, axis=0\EFrda{)}
+\EFv{stds\_Z} = np.std\EFrda{(}Z, axis=0\EFrda{)}
+
+\EFb{print}\EFrda{(}means\_Z, stds\_Z\EFrda{)}
+\end{Verbatim}
+\end{Code}
+
+\begin{verbatim}
+mpg             1.450087e-16
+cylinders      -1.087565e-16
+displacement   -7.250436e-17
+weight         -1.812609e-17
+acceleration    4.350262e-16
+dtype: float64 mpg             1.0
+cylinders       1.0
+displacement    1.0
+weight          1.0
+acceleration    1.0
+dtype: float64
+\end{verbatim}
+
+\section*{Question 5}
+\label{sec:org3033500}
+
+\#\#+begin\textsubscript{src} python :session graphics :results output :exports both :eval yes
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFv{pca} = PCA\EFrda{(}n\_components=2\EFrda{)}
+\EFv{Z\_reduced} = pca.fit\_transform\EFrda{(}Z\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"Reduced data size:"}, Z\_reduced.shape\EFrda{)}
+\EFv{components} = pca.components\_
+plt.plot\EFrda{(}x, components\EFrdb{[}0\EFrdb{]}, label=\EFs{'φ1'}\EFrda{)}
+plt.plot\EFrda{(}x, components\EFrdb{[}1\EFrdb{]}, label=\EFs{'φ2'}\EFrda{)}
+
+plt.xticks\EFrda{(}ticks=x, labels=selected\_coloumns, rotation=45\EFrda{)}
+
+plt.xlabel\EFrda{(}\EFs{'Features'}\EFrda{)}
+plt.ylabel\EFrda{(}\EFs{'Principal Component Weights'}\EFrda{)}
+plt.title\EFrda{(}\EFs{'Principal Component Weights per Feature'}\EFrda{)}
+plt.legend\EFrda{(}\EFrda{)}
+
+\EFcd{\# }\EFc{Show plot}
+plt.tight\_layout\EFrda{(}\EFrda{)}
+plt.savefig\EFrda{(}\EFs{"plot.png"}, bbox\_inches=\EFs{'tight'}\EFrda{)}
+plt.show\EFrda{(}\EFrda{)}
 \end{Verbatim}
 \end{Code}
 

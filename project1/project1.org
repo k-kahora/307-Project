@@ -97,21 +97,22 @@ dtype: float64
 
 * Qustion 3
 
-#+begin_src python :session graphics :results graphics file value :file plot.png :exports both :eval no
+** a
+#+begin_src python :session graphics :results graphics file value :file plot.png :exports both :eval yes
 
-scaler = StandardScaler()
-scaler.fit(X)
-X_standardized = scaler.transform(X)
+# scaler = StandardScaler()
+# scaler.fit(X)
+# X_standardized = scaler.transform(X)
 
-print("Means: ",np.mean(X_standardized,axis=0))
-print("Standard deviations: ",np.std(X_standardized,axis=0))
+# print("Means: ",np.mean(X_standardized,axis=0))
+# print("Standard deviations: ",np.std(X_standardized,axis=0))
 
 print("Original data size:",X.shape)
 # Implement PCA with 2 principal components
 pca = PCA(n_components=2)
 
 # Fit the PCA model to the data and transform the data
-X_reduced = pca.fit_transform(X_standardized)
+X_reduced = pca.fit_transform(X)
 print("Reduced data size:", X_reduced.shape)
 
 #principal components
@@ -135,7 +136,69 @@ plt.legend()
 # Show plot
 plt.tight_layout()
 plt.savefig("plot.png", bbox_inches='tight')
-# plt.show()
+plt.show()
+#+end_src
+
+#+RESULTS:
+[[file:plot.png]]
+
+** b
+It seems pca is caputring the data with larger scales this can lead to misleading conclusions and the importance of features
+
+* Question 4
+
+
+#+begin_src python :session graphics :results output :exports both :eval yes
+
+# Manually standardize the data to have mean 0 and standard deviation 1
+means = np.mean(X, axis=0)
+stds = np.std(X, axis=0)
+Z = (X - means) / stds
+
+# Verify that all features in Z have a mean of approximately zero and a standard deviation of one
+means_Z = np.mean(Z, axis=0)
+stds_Z = np.std(Z, axis=0)
+
+print(means_Z, stds_Z)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+mpg             1.450087e-16
+cylinders      -1.087565e-16
+displacement   -7.250436e-17
+weight         -1.812609e-17
+acceleration    4.350262e-16
+dtype: float64 mpg             1.0
+cylinders       1.0
+displacement    1.0
+weight          1.0
+acceleration    1.0
+dtype: float64
+#+end_example
+
+* Question 5
+
+##+begin_src python :session graphics :results output :exports both :eval yes
+#+begin_src python :session graphics :results graphics file value :file plot.png :exports both :eval yes
+pca = PCA(n_components=2)
+Z_reduced = pca.fit_transform(Z)
+print("Reduced data size:", Z_reduced.shape)
+components = pca.components_
+plt.plot(x, components[0], label='φ1')
+plt.plot(x, components[1], label='φ2')
+
+plt.xticks(ticks=x, labels=selected_coloumns, rotation=45)
+
+plt.xlabel('Features')
+plt.ylabel('Principal Component Weights')
+plt.title('Principal Component Weights per Feature')
+plt.legend()
+
+# Show plot
+plt.tight_layout()
+plt.savefig("plot.png", bbox_inches='tight')
+plt.show()
 #+end_src
 
 #+RESULTS:
