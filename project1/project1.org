@@ -7,7 +7,7 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: num:nil
 #+TITLE: Homework 2
-#+AUTHOR: Malcolm Kahora
+#+AUTHOR: Malcolm Kahora, Vejay, Rohan, Tyler
 #+DATE: \today
 #+SUBTITLE: STA 307
 
@@ -16,34 +16,37 @@
 
 import numpy as np
 import pandas as pd
-from ISLP import load_data
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import subplots
+from ISLP import load_data
+from sklearn.datasets import load_iris
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
 
 AUTO = load_data("Auto")
 #+end_src
+
+#+RESULTS:
+
 * Question 1
 
 
 #+begin_src python :session graphics :results output :exports both
 
-AUTO = load_data("Auto")
 selected_coloumns = ['mpg','cylinders', 'displacement',  'weight', 'acceleration', ]
 X = AUTO[selected_coloumns]
 y = AUTO['origin'] # Origin of car (1. American, 2. European, 3. Japanese)
-
-print((y == 1).sum()) # American
-print((y == 2).sum()) # European
-print((y == 3).sum()) # Japanese
 print(X.head)
-print(y['origin'])
+
+print("American cars: {0}".format((y == 1).sum())) # American
+print("European cars: {0}".format((y == 2).sum())) # European
+print("Japanese cars: {0}".format((y == 3).sum())) # Japanese
 #+end_src
 
 #+RESULTS:
 #+begin_example
-245
-68
-79
+American cars: 245
+European cars: 68
+Japanese cars: 79
 <bound method NDFrame.head of       mpg  cylinders  displacement  weight  acceleration
 0    18.0          8         307.0    3504          12.0
 1    15.0          8         350.0    3693          11.5
@@ -59,3 +62,81 @@ print(y['origin'])
 
 [392 rows x 5 columns]>
 #+end_example
+
+* Question 2
+
+
+
+#+begin_src python :session graphics :results output :exports both
+print("Standard deviation")
+print(X.std())
+print("\n")
+print("Mean")
+print(X.mean())
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Standard deviation
+mpg               7.805007
+cylinders         1.705783
+displacement    104.644004
+weight          849.402560
+acceleration      2.758864
+dtype: float64
+
+
+Mean
+mpg               23.445918
+cylinders          5.471939
+displacement     194.411990
+weight          2977.584184
+acceleration      15.541327
+dtype: float64
+#+end_example
+
+* Qustion 3
+
+#+begin_src python :session graphics :results graphics file value :file plot.png :exports both :eval no
+
+scaler = StandardScaler()
+scaler.fit(X)
+X_standardized = scaler.transform(X)
+
+print("Means: ",np.mean(X_standardized,axis=0))
+print("Standard deviations: ",np.std(X_standardized,axis=0))
+
+print("Original data size:",X.shape)
+# Implement PCA with 2 principal components
+pca = PCA(n_components=2)
+
+# Fit the PCA model to the data and transform the data
+X_reduced = pca.fit_transform(X_standardized)
+print("Reduced data size:", X_reduced.shape)
+
+#principal components
+components = pca.components_
+x = np.arange(components.shape[1]) # 6
+
+# Plot the first and second principal components
+plt.plot(x, components[0], label='φ1')
+plt.plot(x, components[1], label='φ2')
+
+# Define feature names as tick labels
+names = ['mpg', 'cylinders', 'displacement', 'weight', 'acceleration']
+plt.xticks(ticks=x, labels=selected_coloumns, rotation=45)
+
+# Labeling the axes and the legend
+plt.xlabel('Features')
+plt.ylabel('Principal Component Weights')
+plt.title('Principal Component Weights per Feature')
+plt.legend()
+
+# Show plot
+plt.tight_layout()
+plt.savefig("plot.png", bbox_inches='tight')
+# plt.show()
+#+end_src
+
+#+RESULTS:
+[[file:plot.png]]

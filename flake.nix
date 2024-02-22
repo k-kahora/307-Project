@@ -18,6 +18,7 @@
           buildInputs = [
             pkgs.python3
             pkgs.texlive.combined.scheme-full
+            pkgs.nodePackages.pyright
             pkgs.python3Packages.pandas
             pkgs.python3Packages.matplotlib
             pkgs.python3Packages.torch

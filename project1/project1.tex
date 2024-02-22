@@ -1,4 +1,4 @@
-% Created 2024-02-21 Wed 20:42
+% Created 2024-02-22 Thu 19:10
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -13,12 +13,12 @@
 \usepackage{capt-of}
 \usepackage{hyperref}
 \usepackage[margin=1in]{geometry}
-\author{Malcolm Kahora}
+\author{Malcolm Kahora, Vejay, Rohan, Tyler}
 \date{\today}
 \title{Homework 2\\\medskip
 \large STA 307}
 \hypersetup{
- pdfauthor={Malcolm Kahora},
+ pdfauthor={Malcolm Kahora, Vejay, Rohan, Tyler},
  pdftitle={Homework 2},
  pdfkeywords={},
  pdfsubject={},
@@ -142,67 +142,71 @@
 }
 
 \newcommand\efstrut{\vrule height 2.1ex depth 0.8ex width 0pt}
-\definecolor{EFD}{HTML}{ebdbb2}
-\definecolor{EfD}{HTML}{282828}
+\definecolor{EFD}{HTML}{EEFFFF}
+\definecolor{EfD}{HTML}{292D3E}
 \newcommand{\EFD}[1]{\textcolor{EFD}{#1}} % default
-\definecolor{EFh}{HTML}{7c6f64}
+\definecolor{EFh}{HTML}{676E95}
 \newcommand{\EFh}[1]{\textcolor{EFh}{#1}} % shadow
-\definecolor{EFsc}{HTML}{b8bb26}
+\definecolor{EFsc}{HTML}{c3e88d}
 \newcommand{\EFsc}[1]{\textcolor{EFsc}{#1}} % success
-\definecolor{EFw}{HTML}{fabd2f}
+\definecolor{EFw}{HTML}{ffcb6b}
 \newcommand{\EFw}[1]{\textcolor{EFw}{#1}} % warning
-\definecolor{EFe}{HTML}{fb4934}
+\definecolor{EFe}{HTML}{ff5370}
 \newcommand{\EFe}[1]{\textcolor{EFe}{#1}} % error
-\definecolor{EFc}{HTML}{928374}
+\definecolor{EFc}{HTML}{676E95}
 \newcommand{\EFc}[1]{\textcolor{EFc}{#1}} % font-lock-comment-face
-\definecolor{EFcd}{HTML}{928374}
+\definecolor{EFcd}{HTML}{676E95}
 \newcommand{\EFcd}[1]{\textcolor{EFcd}{#1}} % font-lock-comment-delimiter-face
-\definecolor{EFs}{HTML}{b8bb26}
+\definecolor{EFs}{HTML}{c3e88d}
 \newcommand{\EFs}[1]{\textcolor{EFs}{#1}} % font-lock-string-face
-\definecolor{EFd}{HTML}{dfd2b8}
+\definecolor{EFd}{HTML}{8d92af}
 \newcommand{\EFd}[1]{\textcolor{EFd}{#1}} % font-lock-doc-face
-\definecolor{EFm}{HTML}{d3869b}
+\definecolor{EFm}{HTML}{f78c6c}
 \newcommand{\EFm}[1]{\textcolor{EFm}{#1}} % font-lock-doc-markup-face
-\definecolor{EFk}{HTML}{fb4934}
+\definecolor{EFk}{HTML}{89DDFF}
 \newcommand{\EFk}[1]{\textcolor{EFk}{#1}} % font-lock-keyword-face
-\definecolor{EFb}{HTML}{fe8019}
+\definecolor{EFb}{HTML}{82aaff}
 \newcommand{\EFb}[1]{\textcolor{EFb}{#1}} % font-lock-builtin-face
-\definecolor{EFf}{HTML}{b8bb26}
+\definecolor{EFf}{HTML}{82aaff}
 \newcommand{\EFf}[1]{\textcolor{EFf}{#1}} % font-lock-function-name-face
-\definecolor{EFv}{HTML}{83a598}
+\definecolor{EFv}{HTML}{ffcb6b}
 \newcommand{\EFv}[1]{\textcolor{EFv}{#1}} % font-lock-variable-name-face
-\definecolor{EFt}{HTML}{fabd2f}
+\definecolor{EFt}{HTML}{c792ea}
 \newcommand{\EFt}[1]{\textcolor{EFt}{#1}} % font-lock-type-face
-\definecolor{EFo}{HTML}{d3869b}
+\definecolor{EFo}{HTML}{f78c6c}
 \newcommand{\EFo}[1]{\textcolor{EFo}{#1}} % font-lock-constant-face
-\definecolor{EFwr}{HTML}{fabd2f}
+\definecolor{EFwr}{HTML}{ffcb6b}
 \newcommand{\EFwr}[1]{\textcolor{EFwr}{#1}} % font-lock-warning-face
-\newcommand{\EFnc}[1]{\textbf{#1}} % font-lock-negation-char-face
-\newcommand{\EFpp}[1]{\textbf{#1}} % font-lock-preprocessor-face
-\newcommand{\EFrc}[1]{\textbf{#1}} % font-lock-regexp-grouping-construct
-\newcommand{\EFrb}[1]{\textbf{#1}} % font-lock-regexp-grouping-backslash
-\definecolor{Efob}{HTML}{3c3836}
+\definecolor{EFnc}{HTML}{89DDFF}
+\newcommand{\EFnc}[1]{\textcolor{EFnc}{\textbf{#1}}} % font-lock-negation-char-face
+\definecolor{EFpp}{HTML}{89DDFF}
+\newcommand{\EFpp}[1]{\textcolor{EFpp}{\textbf{#1}}} % font-lock-preprocessor-face
+\definecolor{EFrc}{HTML}{89DDFF}
+\newcommand{\EFrc}[1]{\textcolor{EFrc}{\textbf{#1}}} % font-lock-regexp-grouping-construct
+\definecolor{EFrb}{HTML}{89DDFF}
+\newcommand{\EFrb}[1]{\textcolor{EFrb}{\textbf{#1}}} % font-lock-regexp-grouping-backslash
+\definecolor{Efob}{HTML}{232635}
 \newcommand{\EFob}[1]{\colorbox{Efob}{\efstrut{}#1}} % org-block
 \newcommand{\EFhn}[1]{#1} % highlight-numbers-number
 \newcommand{\EFhq}[1]{#1} % highlight-quoted-quote
 \newcommand{\EFhs}[1]{#1} % highlight-quoted-symbol
-\definecolor{EFrda}{HTML}{fe8019}
+\definecolor{EFrda}{HTML}{c792ea}
 \newcommand{\EFrda}[1]{\textcolor{EFrda}{#1}} % rainbow-delimiters-depth-1-face
-\definecolor{EFrdb}{HTML}{cc241d}
+\definecolor{EFrdb}{HTML}{f78c6c}
 \newcommand{\EFrdb}[1]{\textcolor{EFrdb}{#1}} % rainbow-delimiters-depth-2-face
-\definecolor{EFrdc}{HTML}{b8bb26}
+\definecolor{EFrdc}{HTML}{c3e88d}
 \newcommand{\EFrdc}[1]{\textcolor{EFrdc}{#1}} % rainbow-delimiters-depth-3-face
-\definecolor{EFrdd}{HTML}{83a598}
+\definecolor{EFrdd}{HTML}{89DDFF}
 \newcommand{\EFrdd}[1]{\textcolor{EFrdd}{#1}} % rainbow-delimiters-depth-4-face
-\definecolor{EFrde}{HTML}{8ec07c}
+\definecolor{EFrde}{HTML}{bb80b3}
 \newcommand{\EFrde}[1]{\textcolor{EFrde}{#1}} % rainbow-delimiters-depth-5-face
-\definecolor{EFrdf}{HTML}{83a598}
+\definecolor{EFrdf}{HTML}{ffcb6b}
 \newcommand{\EFrdf}[1]{\textcolor{EFrdf}{#1}} % rainbow-delimiters-depth-6-face
-\definecolor{EFrdg}{HTML}{cc241d}
+\definecolor{EFrdg}{HTML}{82aaff}
 \newcommand{\EFrdg}[1]{\textcolor{EFrdg}{#1}} % rainbow-delimiters-depth-7-face
-\definecolor{EFrdh}{HTML}{b8bb26}
+\definecolor{EFrdh}{HTML}{44b9b1}
 \newcommand{\EFrdh}[1]{\textcolor{EFrdh}{#1}} % rainbow-delimiters-depth-8-face
-\definecolor{EFrdi}{HTML}{d3869b}
+\definecolor{EFrdi}{HTML}{80cbc4}
 \newcommand{\EFrdi}[1]{\textcolor{EFrdi}{#1}} % rainbow-delimiters-depth-9-face
 \begin{document}
 
@@ -212,42 +216,135 @@
 \color{EFD}
 \EFk{import} numpy \EFk{as} np
 \EFk{import} pandas \EFk{as} pd
-\EFk{from} ISLP \EFk{import} load\_data
 \EFk{import} matplotlib.pyplot \EFk{as} plt
-\EFk{from} matplotlib.pyplot \EFk{import} subplots
+\EFk{from} ISLP \EFk{import} load\_data
+\EFk{from} sklearn.datasets \EFk{import} load\_iris
+\EFk{from} sklearn.preprocessing \EFk{import} StandardScaler
+\EFk{from} sklearn.decomposition \EFk{import} PCA
 
 \EFv{AUTO} = load\_data\EFrda{(}\EFs{"Auto"}\EFrda{)}
 \end{Verbatim}
 \end{Code}}
 
 \section*{Question 1}
-\label{sec:org7def4b8}
+\label{sec:orge6ad14b}
 
 
 \begin{Code}
 \begin{Verbatim}
 \color{EFD}
-\EFv{AUTO} = load\_data\EFrda{(}\EFs{"Auto"}\EFrda{)}
-\EFv{selected\_coloumns} = \EFrda{[}\EFs{'cylinders'}, \EFs{'displacement'},  \EFs{'weight'}, \EFs{'acceleration'}, \EFrda{]}
+\EFv{selected\_coloumns} = \EFrda{[}\EFs{'mpg'},\EFs{'cylinders'}, \EFs{'displacement'},  \EFs{'weight'}, \EFs{'acceleration'}, \EFrda{]}
+\EFv{X} = AUTO\EFrda{[}selected\_coloumns\EFrda{]}
+\EFv{y} = AUTO\EFrda{[}\EFs{'origin'}\EFrda{]} \EFcd{\# }\EFc{Origin of car (1. American, 2. European, 3. Japanese)}
+\EFb{print}\EFrda{(}X.head\EFrda{)}
 
-\EFb{print}\EFrda{(}AUTO\EFrdb{[}selected\_coloumns\EFrdb{]}.head\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"American cars: \{0\}"}.\EFb{format}\EFrdb{(}\EFrdc{(}y == 1\EFrdc{)}.\EFb{sum}\EFrdc{(}\EFrdc{)}\EFrdb{)}\EFrda{)} \EFcd{\# }\EFc{American}
+\EFb{print}\EFrda{(}\EFs{"European cars: \{0\}"}.\EFb{format}\EFrdb{(}\EFrdc{(}y == 2\EFrdc{)}.\EFb{sum}\EFrdc{(}\EFrdc{)}\EFrdb{)}\EFrda{)} \EFcd{\# }\EFc{European}
+\EFb{print}\EFrda{(}\EFs{"Japanese cars: \{0\}"}.\EFb{format}\EFrdb{(}\EFrdc{(}y == 3\EFrdc{)}.\EFb{sum}\EFrdc{(}\EFrdc{)}\EFrdb{)}\EFrda{)} \EFcd{\# }\EFc{Japanese}
 \end{Verbatim}
 \end{Code}
 
 \begin{verbatim}
-<bound method NDFrame.head of      cylinders  displacement  weight  acceleration
-0            8         307.0    3504          12.0
-1            8         350.0    3693          11.5
-2            8         318.0    3436          11.0
-3            8         304.0    3433          12.0
-4            8         302.0    3449          10.5
-..         ...           ...     ...           ...
-387          4         140.0    2790          15.6
-388          4          97.0    2130          24.6
-389          4         135.0    2295          11.6
-390          4         120.0    2625          18.6
-391          4         119.0    2720          19.4
+<bound method NDFrame.head of       mpg  cylinders  displacement  weight  acceleration
+0    18.0          8         307.0    3504          12.0
+1    15.0          8         350.0    3693          11.5
+2    18.0          8         318.0    3436          11.0
+3    16.0          8         304.0    3433          12.0
+4    17.0          8         302.0    3449          10.5
+..    ...        ...           ...     ...           ...
+387  27.0          4         140.0    2790          15.6
+388  44.0          4          97.0    2130          24.6
+389  32.0          4         135.0    2295          11.6
+390  28.0          4         120.0    2625          18.6
+391  31.0          4         119.0    2720          19.4
 
-[392 rows x 4 columns]>
+[392 rows x 5 columns]>
+American cars: 245
+European cars: 68
+Japanese cars: 79
 \end{verbatim}
+
+\section*{Question 2}
+\label{sec:orgf54ac04}
+
+
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFb{print}\EFrda{(}\EFs{"Standard deviation"}\EFrda{)}
+\EFb{print}\EFrda{(}X.std\EFrdb{(}\EFrdb{)}\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"}\EFo{\char92{}n}\EFs{"}\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"Mean"}\EFrda{)}
+\EFb{print}\EFrda{(}X.mean\EFrdb{(}\EFrdb{)}\EFrda{)}
+\end{Verbatim}
+\end{Code}
+
+\begin{verbatim}
+Standard deviation
+mpg               7.805007
+cylinders         1.705783
+displacement    104.644004
+weight          849.402560
+acceleration      2.758864
+dtype: float64
+
+
+Mean
+mpg               23.445918
+cylinders          5.471939
+displacement     194.411990
+weight          2977.584184
+acceleration      15.541327
+dtype: float64
+\end{verbatim}
+
+\section*{Qustion 3}
+\label{sec:org5f38fec}
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}
+\EFv{scaler} = StandardScaler\EFrda{(}\EFrda{)}
+scaler.fit\EFrda{(}X\EFrda{)}
+\EFv{X\_standardized} = scaler.transform\EFrda{(}X\EFrda{)}
+
+\EFb{print}\EFrda{(}\EFs{"Means: "},np.mean\EFrdb{(}X\_standardized,axis=0\EFrdb{)}\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"Standard deviations: "},np.std\EFrdb{(}X\_standardized,axis=0\EFrdb{)}\EFrda{)}
+
+\EFb{print}\EFrda{(}\EFs{"Original data size:"},X.shape\EFrda{)}
+\EFcd{\# }\EFc{Implement PCA with 2 principal components}
+\EFv{pca} = PCA\EFrda{(}n\_components=2\EFrda{)}
+
+\EFcd{\# }\EFc{Fit the PCA model to the data and transform the data}
+\EFv{X\_reduced} = pca.fit\_transform\EFrda{(}X\_standardized\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"Reduced data size:"}, X\_reduced.shape\EFrda{)}
+
+\EFcd{\#}\EFc{principal components}
+\EFv{components} = pca.components\_
+\EFv{x} = np.arange\EFrda{(}components.shape\EFrdb{[}1\EFrdb{]}\EFrda{)} \EFcd{\# }\EFc{6}
+
+\EFcd{\# }\EFc{Plot the first and second principal components}
+plt.plot\EFrda{(}x, components\EFrdb{[}0\EFrdb{]}, label=\EFs{'φ1'}\EFrda{)}
+plt.plot\EFrda{(}x, components\EFrdb{[}1\EFrdb{]}, label=\EFs{'φ2'}\EFrda{)}
+
+\EFcd{\# }\EFc{Define feature names as tick labels}
+\EFv{names} = \EFrda{[}\EFs{'mpg'}, \EFs{'cylinders'}, \EFs{'displacement'}, \EFs{'weight'}, \EFs{'acceleration'}\EFrda{]}
+plt.xticks\EFrda{(}ticks=x, labels=selected\_coloumns, rotation=45\EFrda{)}
+
+\EFcd{\# }\EFc{Labeling the axes and the legend}
+plt.xlabel\EFrda{(}\EFs{'Features'}\EFrda{)}
+plt.ylabel\EFrda{(}\EFs{'Principal Component Weights'}\EFrda{)}
+plt.title\EFrda{(}\EFs{'Principal Component Weights per Feature'}\EFrda{)}
+plt.legend\EFrda{(}\EFrda{)}
+
+\EFcd{\# }\EFc{Show plot}
+plt.tight\_layout\EFrda{(}\EFrda{)}
+plt.savefig\EFrda{(}\EFs{"plot.png"}, bbox\_inches=\EFs{'tight'}\EFrda{)}
+\EFcd{\# }\EFc{plt.show()}
+\end{Verbatim}
+\end{Code}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{plot.png}
+\end{center}
 \end{document}
