@@ -7,7 +7,7 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: num:nil
 #+TITLE: Homework 2
-#+AUTHOR: Malcolm Kahora, Vejay, Rohan, Tyler
+#+AUTHOR: Malcolm, Vejay, Rohan, Tyler
 #+DATE: \today
 #+SUBTITLE: STA 307
 
