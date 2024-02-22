@@ -1,4 +1,4 @@
-% Created 2024-02-22 Thu 19:26
+% Created 2024-02-22 Thu 21:29
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -227,7 +227,7 @@
 \end{Code}}
 
 \section*{Question 1}
-\label{sec:orgd0c1271}
+\label{sec:org3782331}
 
 
 \begin{Code}
@@ -265,7 +265,7 @@ Japanese cars: 79
 \end{verbatim}
 
 \section*{Question 2}
-\label{sec:org55b33e6}
+\label{sec:org7b61cfc}
 
 
 
@@ -299,41 +299,28 @@ dtype: float64
 \end{verbatim}
 
 \section*{Qustion 3}
-\label{sec:orgc5c61c2}
+\label{sec:org7e99acc}
 
 \subsection*{a}
-\label{sec:orgbe84ed0}
+\label{sec:orga2f5aee}
 \begin{Code}
 \begin{Verbatim}
 \color{EFD}
-\EFcd{\# }\EFc{scaler = StandardScaler()}
-\EFcd{\# }\EFc{scaler.fit(X)}
-\EFcd{\# }\EFc{X\_standardized = scaler.transform(X)}
-
-\EFcd{\# }\EFc{print("Means: ",np.mean(X\_standardized,axis=0))}
-\EFcd{\# }\EFc{print("Standard deviations: ",np.std(X\_standardized,axis=0))}
-
 \EFb{print}\EFrda{(}\EFs{"Original data size:"},X.shape\EFrda{)}
-\EFcd{\# }\EFc{Implement PCA with 2 principal components}
 \EFv{pca} = PCA\EFrda{(}n\_components=2\EFrda{)}
 
-\EFcd{\# }\EFc{Fit the PCA model to the data and transform the data}
 \EFv{X\_reduced} = pca.fit\_transform\EFrda{(}X\EFrda{)}
 \EFb{print}\EFrda{(}\EFs{"Reduced data size:"}, X\_reduced.shape\EFrda{)}
 
-\EFcd{\#}\EFc{principal components}
 \EFv{components} = pca.components\_
 \EFv{x} = np.arange\EFrda{(}components.shape\EFrdb{[}1\EFrdb{]}\EFrda{)} \EFcd{\# }\EFc{6}
 
-\EFcd{\# }\EFc{Plot the first and second principal components}
 plt.plot\EFrda{(}x, components\EFrdb{[}0\EFrdb{]}, label=\EFs{'φ1'}\EFrda{)}
 plt.plot\EFrda{(}x, components\EFrdb{[}1\EFrdb{]}, label=\EFs{'φ2'}\EFrda{)}
 
-\EFcd{\# }\EFc{Define feature names as tick labels}
-\EFv{names} = \EFrda{[}\EFs{'mpg'}, \EFs{'cylinders'}, \EFs{'displacement'}, \EFs{'weight'}, \EFs{'acceleration'}\EFrda{]}
-plt.xticks\EFrda{(}ticks=x, labels=selected\_coloumns, rotation=45\EFrda{)}
+\EFv{names} = X.coloumns
+plt.xticks\EFrda{(}ticks=x, labels=names, rotation=45\EFrda{)}
 
-\EFcd{\# }\EFc{Labeling the axes and the legend}
 plt.xlabel\EFrda{(}\EFs{'Features'}\EFrda{)}
 plt.ylabel\EFrda{(}\EFs{'Principal Component Weights'}\EFrda{)}
 plt.title\EFrda{(}\EFs{'Principal Component Weights per Feature'}\EFrda{)}
@@ -343,6 +330,7 @@ plt.legend\EFrda{(}\EFrda{)}
 plt.tight\_layout\EFrda{(}\EFrda{)}
 plt.savefig\EFrda{(}\EFs{"plot.png"}, bbox\_inches=\EFs{'tight'}\EFrda{)}
 plt.show\EFrda{(}\EFrda{)}
+plt.close\EFrda{(}\EFrda{)}
 \end{Verbatim}
 \end{Code}
 
@@ -351,11 +339,10 @@ plt.show\EFrda{(}\EFrda{)}
 \end{center}
 
 \subsection*{b}
-\label{sec:org964fb6e}
-It seems pca is caputring the data with larger scales this can lead to misleading conclusions and the importance of features
-
+\label{sec:org63392af}
+It appears that PCA is capturing features with larger scales, which can lead to misleading conclusions regarding the importance of these features.
 \section*{Question 4}
-\label{sec:org931dfad}
+\label{sec:org0bf7c0b}
 
 
 \begin{Code}
@@ -370,17 +357,23 @@ It seems pca is caputring the data with larger scales this can lead to misleadin
 \EFv{means\_Z} = np.mean\EFrda{(}Z, axis=0\EFrda{)}
 \EFv{stds\_Z} = np.std\EFrda{(}Z, axis=0\EFrda{)}
 
-\EFb{print}\EFrda{(}means\_Z, stds\_Z\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"means"}\EFrda{)}
+\EFb{print}\EFrda{(}means\_Z\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"std"}\EFrda{)}
+\EFb{print}\EFrda{(}stds\_Z\EFrda{)}
 \end{Verbatim}
 \end{Code}
 
 \begin{verbatim}
+means
 mpg             1.450087e-16
 cylinders      -1.087565e-16
 displacement   -7.250436e-17
 weight         -1.812609e-17
 acceleration    4.350262e-16
-dtype: float64 mpg             1.0
+dtype: float64
+std
+mpg             1.0
 cylinders       1.0
 displacement    1.0
 weight          1.0
@@ -389,9 +382,10 @@ dtype: float64
 \end{verbatim}
 
 \section*{Question 5}
-\label{sec:org3033500}
+\label{sec:orge922b12}
+\subsection*{a}
+\label{sec:org9c8bb26}
 
-\#\#+begin\textsubscript{src} python :session graphics :results output :exports both :eval yes
 \begin{Code}
 \begin{Verbatim}
 \color{EFD}\EFv{pca} = PCA\EFrda{(}n\_components=2\EFrda{)}
@@ -410,12 +404,40 @@ plt.legend\EFrda{(}\EFrda{)}
 
 \EFcd{\# }\EFc{Show plot}
 plt.tight\_layout\EFrda{(}\EFrda{)}
-plt.savefig\EFrda{(}\EFs{"plot.png"}, bbox\_inches=\EFs{'tight'}\EFrda{)}
-plt.show\EFrda{(}\EFrda{)}
+plt.savefig\EFrda{(}\EFs{"plot\_standarized.png"}, bbox\_inches=\EFs{'tight'}\EFrda{)}
+plt.close\EFrda{(}\EFrda{)}
 \end{Verbatim}
 \end{Code}
 
 \begin{center}
-\includegraphics[width=.9\linewidth]{plot.png}
+\includegraphics[width=.9\linewidth]{plot_standarized.png}
 \end{center}
+\begin{itemize}
+\item This plot is less sharp and considers more features than the plot that was not normalized
+\end{itemize}
+
+\subsection*{b}
+\label{sec:org1542d22}
+It seems that the three most important features are 'cylinders', 'displacement', and 'weight', as the first principal component (\(\phi\)φ1) weighs these more heavily, with 'displacement' appearing to have the highest contribution to variance by a small margin.
+\subsection*{c}
+\label{sec:orgabb94d6}
+
+\begin{Code}
+\begin{Verbatim}
+\color{EFD}\EFv{dot\_product} = np.dot\EFrda{(}components\EFrdb{[}0\EFrdb{]}, components\EFrdb{[}1\EFrdb{]}\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"Dot product: "},dot\_product\EFrda{)}
+\EFv{magnitude\_phi1} = np.linalg.norm\EFrda{(}components\EFrdb{[}0\EFrdb{]}\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"PC 1 magnitude: "},magnitude\_phi1\EFrda{)}
+\EFv{magnitude\_phi2} = np.linalg.norm\EFrda{(}components\EFrdb{[}1\EFrdb{]}\EFrda{)}
+\EFb{print}\EFrda{(}\EFs{"PC 2 magnitude: "},magnitude\_phi2\EFrda{)}
+\end{Verbatim}
+\end{Code}
+
+\begin{verbatim}
+Dot product:  0.0
+PC 1 magnitude:  1.0000000000000002
+PC 2 magnitude:  1.0000000000000002
+\end{verbatim}
+\section*{Question 6}
+\label{sec:org67d7f2d}
 \end{document}
