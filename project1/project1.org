@@ -136,7 +136,7 @@ plt.close()
 [[file:plot.png]]
 
 ** b
-It seems pca is caputring the data with larger scales this can lead to misleading conclusions and the importance of features
+It seems pca is caputring the data with larger scales this can lead to misleading conclusions about the importance of features
 
 * Question 4
 
