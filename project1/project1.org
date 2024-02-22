@@ -196,7 +196,7 @@ plt.close()
 #+end_src
 
 #+RESULTS:
-[[file:plot.png]]
+[[file:plot-standard.png]]
 
 ** b
 It seems that the three most important features are 'cylinders', 'displacement', and 'weight', as the first principal component (\(\phi\)1) weighs these more heavily, with 'displacement' appearing to have the highest contribution to variance by a small margin.

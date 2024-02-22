@@ -1,2 +1,2 @@
 # Below link is the project pdf
-[Click](README.pdf)
+[Click](project1/project1.pdf)
