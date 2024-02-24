@@ -12,8 +12,8 @@
 #+SUBTITLE: STA 307
 
 #+attr_latex: :engraved-theme doom-gruvbox-light
-#+begin_src python :session graphics :results output :exports both
-
+#+begin_src python :session graphics :results output :exports both :tangle project1.py
+# Imports
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -21,7 +21,6 @@ from ISLP import load_data
 from sklearn.datasets import load_iris
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
-
 AUTO = load_data("Auto")
 #+end_src
 
@@ -30,13 +29,12 @@ AUTO = load_data("Auto")
 * Question 1
 
 
-#+begin_src python :session graphics :results output :exports both
-
+#+begin_src python :session graphics :results output :exports both :tangle project1.py
+# Question1
 selected_coloumns = ['mpg','cylinders', 'displacement',  'weight', 'acceleration', ]
 X = AUTO[selected_coloumns]
 y = AUTO['origin'] # Origin of car (1. American, 2. European, 3. Japanese)
 print(X.head)
-
 print("American cars: {0}".format((y == 1).sum())) # American
 print("European cars: {0}".format((y == 2).sum())) # European
 print("Japanese cars: {0}".format((y == 3).sum())) # Japanese
@@ -67,7 +65,8 @@ Japanese cars: 79
 
 
 
-#+begin_src python :session graphics :results output :exports both
+#+begin_src python :session graphics :results output :exports both :tangle project1.py
+# Question2
 print("Standard deviation")
 print(X.std())
 print("\n")
@@ -98,35 +97,22 @@ dtype: float64
 * Qustion 3
 
 ** a
-#+begin_src python :session graphics :results graphics file value :file plot.png :exports both :eval yes
-
+#+begin_src python :session graphics :results graphics file value :file plot.png :exports both :eval yes :tangle project1.py
+# Question3_parta
 print("Original data size:",X.shape)
-# Implement PCA with 2 principal components
 pca = PCA(n_components=2)
-
-# Fit the PCA model to the data and transform the data
 X_reduced = pca.fit_transform(X)
 print("Reduced data size:", X_reduced.shape)
-
-#principal components
 components = pca.components_
 x = np.arange(components.shape[1]) # 6
-
-# Plot the first and second principal components
 plt.plot(x, components[0], label='φ1')
 plt.plot(x, components[1], label='φ2')
-
-# Define feature names as tick labels
 names = ['mpg', 'cylinders', 'displacement', 'weight', 'acceleration']
 plt.xticks(ticks=x, labels=selected_coloumns, rotation=45)
-
-# Labeling the axes and the legend
 plt.xlabel('Features')
 plt.ylabel('Principal Component Weights')
 plt.title('Principal Component Weights per Feature')
 plt.legend()
-
-# Show plot
 plt.tight_layout()
 plt.savefig("plot.png", bbox_inches='tight')
 plt.close()
@@ -141,17 +127,13 @@ It seems pca is caputring the data with larger scales this can lead to misleadin
 * Question 4
 
 
-#+begin_src python :session graphics :results output :exports both :eval yes
-
-# Manually standardize the data to have mean 0 and standard deviation 1
+#+begin_src python :session graphics :results output :exports both :eval yes :tangle project1.py
+# Question4
 means = np.mean(X, axis=0)
 stds = np.std(X, axis=0)
 Z = (X - means) / stds
-
-# Verify that all features in Z have a mean of approximately zero and a standard deviation of one
 means_Z = np.mean(Z, axis=0)
 stds_Z = np.std(Z, axis=0)
-
 print(means_Z, stds_Z)
 #+end_src
 
@@ -173,22 +155,19 @@ dtype: float64
 * Question 5
 
 ** a
-#+begin_src python :session graphics :results graphics file value :file plot-standard.png :exports both :eval yes
+#+begin_src python :session graphics :results graphics file value :file plot-standard.png :exports both :eval yes :tangle project1.py
+# Question5_parta
 pca = PCA(n_components=2)
 Z_reduced = pca.fit_transform(Z)
 print("Reduced data size:", Z_reduced.shape)
 components = pca.components_
 plt.plot(x, components[0], label='φ1')
 plt.plot(x, components[1], label='φ2')
-
 plt.xticks(ticks=x, labels=selected_coloumns, rotation=45)
-
 plt.xlabel('Features')
 plt.ylabel('Principal Component Weights')
 plt.title('Principal Component Weights per Feature')
 plt.legend()
-
-# Show plot
 plt.tight_layout()
 plt.savefig("plot-standard.png", bbox_inches='tight')
 plt.close()
@@ -202,9 +181,9 @@ plt.close()
 It seems that the three most important features are 'cylinders', 'displacement', and 'weight', as the first principal component (\(\phi\)1) weighs these more heavily, with 'displacement' appearing to have the highest contribution to variance by a small margin.
 ** c
 
-#+begin_src python :session graphics :results output :exports both :eval yes
+#+begin_src python :session graphics :results output :exports both :eval yes :tangle project1.py
+# Question5_partc
 dot_product_mock = np.dot(components[0], components[1])
-
 # Calculate the magnitude (norm) of each principal component to check if it's equal to one
 magnitude_phi1_mock = np.linalg.norm(components[0])
 magnitude_phi2_mock = np.linalg.norm(components[1])
@@ -220,3 +199,29 @@ print("Magnitude phi 2", magnitude_phi2)
 : Magnitude phi 2 1.0000000000000002
 
 * Question 6
+** a
+#+begin_src python :session graphics :results graphics file value :file plot-scatter.png :exports both  :tangle project1.py
+# Question6_parta
+origins = ["American", "European", "Japanese"]
+# plt.figure(figsize=(8, 6))
+for origin in [1, 2, 3]:
+    subset = Z_reduced[origin == y]
+    plt.scatter(subset[:, 0], subset[:, 1], label=origins[origin - 1], alpha=0.7)
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.title('PCA of Car Dataset by Origin')
+plt.legend(title='Car Origin')
+plt.tight_layout()
+plt.savefig("plot-scatter.png")
+plt.close()
+#+end_src
+
+#+RESULTS:
+[[file:plot-scatter.png]]
+
+** b
+** c
+* Question 7
+** a
+** b
+** c
