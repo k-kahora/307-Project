@@ -11,7 +11,7 @@
 #+DATE: \today
 #+SUBTITLE: STA 307
 
-#+attr_latex: :engraved-theme doom-one
+#+attr_latex: :engraved-theme doom-gruvbox-light
 #+begin_src python :session graphics :results output :exports both
 
 import numpy as np
