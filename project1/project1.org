@@ -220,6 +220,37 @@ plt.close()
 [[file:plot-scatter.png]]
 
 ** b
+
+
+#+begin_src python :session graphics :results output :exports both :eval yes :tangle project1.py
+# Assuming AUTO is a pandas DataFrame containing the dataset
+
+# Calculate mean value of the feature (e.g., 'mpg') for each class
+mean_mpg_american = AUTO[AUTO['origin'] == 1]['mpg'].mean()
+mean_mpg_european = AUTO[AUTO['origin'] == 2]['mpg'].mean()
+mean_mpg_japanese = AUTO[AUTO['origin'] == 3]['mpg'].mean()
+
+# Display the mean values
+print("Mean MPG for American cars:", mean_mpg_american)
+print("Mean MPG for European cars:", mean_mpg_european)
+print("Mean MPG for Japanese cars:", mean_mpg_japanese)
+
+# Determine which class has the largest mean value for the feature
+if mean_mpg_american > mean_mpg_european and mean_mpg_american > mean_mpg_japanese:
+    print("American cars have the largest mean MPG.")
+elif mean_mpg_european > mean_mpg_american and mean_mpg_european > mean_mpg_japanese:
+    print("European cars have the largest mean MPG.")
+else:
+    print("Japanese cars have the largest mean MPG.")
+
+#+end_src
+
+#+RESULTS:
+: Mean MPG for American cars: 20.0334693877551
+: Mean MPG for European cars: 27.602941176470587
+: Mean MPG for Japanese cars: 30.450632911392404
+: Japanese cars have the largest mean MPG.
+
 ** c
 * Question 7
 ** a
